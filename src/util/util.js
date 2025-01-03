@@ -5,8 +5,28 @@ const DATA_FILE = 'data/data.json';
 
 /** @returns {import('../types/index').IConfig} */
 function getConfig() {
-  // @ts-ignore
-  return jsonc.parse(fs.readFileSync('config.jsonc', 'utf-8'));
+  // JSONC を読み込み
+  const config = jsonc.parse(fs.readFileSync('config.jsonc', 'utf-8'));
+  
+  // 環境変数を展開
+  replaceEnvVariables(config);
+
+  return config;
+}
+
+/**
+ * 再帰的にオブジェクト内の "process.env.XXX" を環境変数に置き換える
+ * @param {object} obj
+ */
+function replaceEnvVariables(obj) {
+  for (const key in obj) {
+    if (typeof obj[key] === 'string' && obj[key].startsWith('process.env.')) {
+      const envKey = obj[key].slice('process.env.'.length); // "process.env." を除去
+      obj[key] = process.env[envKey] || '';
+    } else if (typeof obj[key] === 'object' && obj[key] !== null) {
+      replaceEnvVariables(obj[key]); // ネストされたオブジェクトも処理
+    }
+  }
 }
 
 /**
@@ -56,4 +76,4 @@ function setData(key, value) {
   return fs.writeFileSync(DATA_FILE, JSON.stringify(data, null, 2));
 }
 
-module.exports = { validateConfig, getConfig, getData, setData }
+module.exports = { validateConfig, getConfig, getData, setData };
