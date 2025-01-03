@@ -1,6 +1,6 @@
 const fs = require('fs');
 const { ChatInput } = require('@akki256/discord-interaction');
-const { EmbedBuilder, ApplicationCommandOptionType, ButtonBuilder, ActionRowBuilder, ButtonStyle } = require('discord.js');
+const { EmbedBuilder, ApplicationCommandOptionType, ButtonBuilder, ActionRowBuilder, ButtonStyle, MessageFlags } = require('discord.js');
 const { sendCommand } = require('../handlers/MessageHandler');
 const embeds = require('../embeds');
 const localization = require('./_localizations.json');
@@ -36,7 +36,7 @@ const runCommand = new ChatInput({
   const isOP = member.roles.cache.hasAny(...main.config.command_role_id);
   if (!isOP) return interaction.reply({
     embeds: [ embeds.error(main.lang.run('command.error.nopermission')) ],
-    ephemeral: true
+    flags: MessageFlags.Ephemeral
   });
   
   const embed = new EmbedBuilder()
