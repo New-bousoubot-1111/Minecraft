@@ -1,6 +1,6 @@
 const fs = require('fs');
 const { ChatInput } = require('@akki256/discord-interaction');
-const { EmbedBuilder, ApplicationCommandOptionType } = require('discord.js');
+const { EmbedBuilder, ApplicationCommandOptionType, MessageFlags } = require('discord.js');
 const { sendCommand } = require('../handlers/MessageHandler');
 const localization = require('./_localizations.json');
 const main = require('../index.js');
@@ -37,7 +37,7 @@ const tellCommand = new ChatInput({
       text: `Requested by ${member?.displayName ?? interaction.user.tag}`,
       iconURL: interaction.user.displayAvatarURL()
     });
-  await interaction.reply({ embeds: [embed], ephemeral: true });
+  await interaction.reply({ embeds: [embed], flags: MessageFlags.Ephemeral });
   
   const target = interaction.options.getString('target');
   const message = interaction.options.getString('message');
@@ -49,7 +49,6 @@ const tellCommand = new ChatInput({
   // @ts-ignore
   await interaction.editReply({ embeds: [res.embed], files: res.files });
   if (res.files) fs.unlinkSync(res.files[0]);
-  
 }, async (interaction) => {
   const focused = interaction.options.getFocused(true);
   const _players = main.server.getWorlds().flatMap(w => w.lastPlayers);
