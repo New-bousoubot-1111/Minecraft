@@ -4,6 +4,8 @@ const { server, client, version } = require('discord-mcbe');
 // Discordボットのトークンを環境変数から取得
 const DISCORD_TOKEN = process.env.DISCORD_TOKEN;
 
+console.log('Discord Token:', DISCORD_TOKEN); // トークンが表示されるはずです
+
 if (!DISCORD_TOKEN) {
   console.error('Error: Discord token is not defined in environment variables.');
   process.exit(1); // トークンがない場合はエラーで終了
