@@ -1,5 +1,5 @@
 // @ts-check
-
+require('dotenv').config(); // 環境変数を読み込むための設定
 const path = require('path');
 const fs = require('fs');
 const { Client, GatewayIntentBits, codeBlock } = require('discord.js');
