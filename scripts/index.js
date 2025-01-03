@@ -1,4 +1,5 @@
 require('dotenv').config(); // 環境変数を読み込むための設定
+
 const discord_token = process.env.discord_token;
 const { server, client, version } = require('discord-mcbe');
 
