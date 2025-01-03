@@ -3,7 +3,6 @@
 
 {
   // required
-  "discord_token": "process.env.discord_token", // botのトークン
   "guild_id": "1041000628975054859", // このbotを使うサーバー(Guild)のID
   "channel_id": "1192117995561033768", // メッセージを送信するチャンネルのID
   
