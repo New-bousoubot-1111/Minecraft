@@ -3,9 +3,9 @@
 
 {
   // required
-  "discord_token": "", // botのトークン
-  "guild_id": "", // このbotを使うサーバー(Guild)のID
-  "channel_id": "", // メッセージを送信するチャンネルのID
+  "discord_token": "MTMyNDcxNjczNjExNjgyMjAxNw.GykLyl.er-JGaVrkw5zDe6HYdiueuqx48piO9Hg_79ibo", // botのトークン
+  "guild_id": "1041000628975054859", // このbotを使うサーバー(Guild)のID
+  "channel_id": "1192117995561033768", // メッセージを送信するチャンネルのID
   
   // optional
   "port": 19132, // websocketをlistenするポート
