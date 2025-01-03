@@ -1,16 +1,17 @@
-const { ButtonBuilder, ActionRowBuilder, ButtonStyle } = require('discord.js');
+const { ButtonBuilder, ActionRowBuilder, ButtonStyle, MessageFlags } = require('discord.js');
 const embeds = require('../../embeds');
 const { panels, lang } = require('../../index.js');
 
 /** @param {import('discord.js').ChatInputCommandInteraction} interaction */
 async function getPanel(interaction) {
-  await interaction.deferReply({ ephemeral: true });
+  await interaction.deferReply({ flags: MessageFlags.Ephemeral });
+  
   const panel = await panels.fetch();
   
   const options = {
     components: [],
     embeds: [],
-  }
+  };
   
   if (panel) {
     const button = new ButtonBuilder()
