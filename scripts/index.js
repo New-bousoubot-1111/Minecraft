@@ -1,10 +1,6 @@
 require('dotenv').config(); // 環境変数を読み込むための設定
-const { server, client, version } = require('discord-mcbe');
-
-// Discordボットのトークンを環境変数から取得
 const DISCORD_TOKEN = process.env.DISCORD_TOKEN;
-
-console.log('Discord Token:', DISCORD_TOKEN); // トークンが表示されるはずです
+const { server, client, version } = require('discord-mcbe');
 
 if (!DISCORD_TOKEN) {
   console.error('Error: Discord token is not defined in environment variables.');
