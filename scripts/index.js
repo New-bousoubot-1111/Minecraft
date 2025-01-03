@@ -1,12 +1,5 @@
 require('dotenv').config(); // 環境変数を読み込むための設定
-
-const discord_token = process.env.discord_token;
 const { server, client, version } = require('discord-mcbe');
-
-if (!discord_token) {
-  console.error('Error: Discord token is not defined in environment variables.');
-  process.exit(1); // トークンがない場合はエラーで終了
-}
 
 console.log('[Script] loaded!');
 
