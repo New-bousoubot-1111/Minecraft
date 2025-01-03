@@ -1,4 +1,3 @@
-require('dotenv').config(); // 環境変数を読み込むための設定
 const { server, client, version } = require('discord-mcbe');
 
 console.log('[Script] loaded!');
